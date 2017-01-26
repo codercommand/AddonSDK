@@ -1,0 +1,28 @@
+import zipfile as zf
+import os
+import json
+y = input('do you want to include image? [yes|no]')
+with open('pack_manifest.json', 'r') as f:
+    c = json.loads(f.read())#gets name of addon for zip
+with zf.ZipFile(c["header"]["name"]+'.mcpack', 'x') as f:
+    z = os.listdir()
+    if len(z) > 2:#checks to see if should zip
+        f.write('pack_manifest.json')#zips addon manifest
+        if y != 'no':#this checks to see if we want a image
+            try:
+                f.write('pack_icon.png')#zips addon icon
+            except FileNotFoundError:
+                y = input('Error: \"pack_icon.png\" doesn\'t exist')
+        z = os.listdir('entities')
+        for x in z:
+            f.write('entities/'+x)
+        z = os.listdir()
+        if len(z) > 3:
+            z = os.listdir('loot_tables')
+            if len(z) > 0:
+                for x in z:
+                    c = os.listdir('loot_tables/'+x)
+                    for Q in c:
+                        f.write('loot_tables/'+x+'/'+Q)
+    else:
+        y = input('Error: nothing to compile')

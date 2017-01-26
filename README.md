@@ -6,3 +6,6 @@ requiers python 3.5
 This is a command line program for making minecraft behavior pack addons 
 
 The Zip packer for packing addons is not beleaved to be the most stable, bugs with it are kinda known.
+
+I'll be working to improve this thing so any ideas on what to fix
+or what should be implumented next is welcome

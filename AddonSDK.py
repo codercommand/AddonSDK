@@ -29,9 +29,9 @@ def _rand():#this function makes a random uuid
     return x
 #_____________________________________________________________________
 def _zip(x):#this function makes ziper
-    with open('zip.txt', 'r') as f:
+    with open('ziper', 'r') as f:
         z = f.read()#this makes zip excutable
-    with open(x+'ip.py', 'w') as f:
+    with open(x+'iper.py', 'w') as f:
         f.write(z)
 #_____________________________________________________________________
 def _PMU(x):#this function makes manifest

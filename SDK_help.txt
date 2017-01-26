@@ -1,15 +1,14 @@
 AddonSDK 1.1
 
 The AddonSDK is a standard development kit
-for making behavior addons.
-The SDK currently only supports the creation
-of behavior packs.
-All the following directorys are supported:
+for making behavior addons
 
-pack_manifest.json
-pack_icon.png
-entities/<file name>
-loot_table/<folder name>/<file names>
+the SDK currently only supports the creation
+of behavior packs
+
+all the following file formats are supported:
+
+json, txt, and png, anything else it wont pack
 
 
 the SDK currently only has the following commands:

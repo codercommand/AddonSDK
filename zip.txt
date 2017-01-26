@@ -1,6 +1,7 @@
 import zipfile as zf
 import os
 import json
+
 y = input('do you want to include image? [yes|no]')
 with open('pack_manifest.json', 'r') as f:
     c = json.loads(f.read())#gets name of addon for zip

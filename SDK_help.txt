@@ -1,0 +1,39 @@
+AddonSDK 1.1
+
+The AddonSDK is a standard development kit
+for making behavior addons
+
+the SDK currently only supports the creation
+of behavior packs
+
+all the following file formats are supported:
+
+json, txt, and png, anything else it wont pack
+
+
+the SDK currently only has the following commands:
+
+$ random 
+random returns a random uuid for your projects
+
+$ exit
+this can be used to close the console instead of the exit button
+
+$ make manifest
+this is used to make a manifest for anyone that only
+wants a manifest, the manifests already come with a random 
+uuid, so no need to find one
+
+$ make ziper
+this can be used to make a ziper program, for if anyone wants to zip
+a pack but never made it with the $ new <project name>
+command
+
+$ new <project name>
+this is used to start a behavior addon pack,
+it'll make the manifest, ziper, entities, and loot_tables
+folder/files
+
+$ update <project name>
+this is used to change/update the manifest in an already made
+project, when doing so it'll also make new uuids for the manifest

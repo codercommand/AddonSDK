@@ -1,0 +1,89 @@
+import zipfile as zf
+import json
+import os
+
+z = os.listdir()#this gets all files in directory to pack
+z.remove('ziper.py')#this stops the zipper from being packed
+
+#_____________________________________________________________________
+ch_manifest = False
+try:#this try is used to make sure everything is there in manifest,
+    #so you don't have any errors on zip compile time
+    
+    z.index('pack_manifest.json')
+    with open('pack_manifest.json') as f:
+        p = json.loads(f.read())
+    print('Validating manifest,')
+    print('Pack name: {},'.format(p['header']['name']))
+    print('Pack version: {},'.format(p['header']['packs_version']))
+    print('Pack id: {},'.format(p['header']['pack_id']))
+    print('Packs pack description: {}'.format(p['header']['modules'][0]['description']))
+    print('Packs pack version: {}'.format(p['header']['modules'][0]['version']))
+    print('Packs pack type: {}'.format(p['header']['modules'][0]['type']))
+    print('Packs pack uuid: {}'.format(p['header']['modules'][0]['uuid']))
+    ch_manifest = True#this is check point to see if the manifest has the
+    #matirel required to make a sucssesful compile
+        
+except:
+    print('Error there is no manifest file or manifest has somthing missing.')
+    uc = input('in order to fix the problem try running the $ update <project name> command')
+#_____________________________________________________________________
+ch_truefile = False#from here on this is the code that zips all png, txt, folders,
+if ch_manifest == True:#and json files
+    with zf.ZipFile(p['header']['name']+'.mcpack', 'x') as f:
+        
+        for x_1 in z:#this is a block, every time theres an extra block the program
+            if x_1[-5:] == '.json':#can compile and extra directory length
+                f.write(x_1)#currently its only got enough blocks to do
+            elif x_1[-4:] == '.png':#as far as root/sud1/sud2/file
+                f.write(x_1)
+            elif x_1[-4:] == '.txt':
+                f.write(x_1)
+            for xl in range(len(x_1)):
+                if x_1[xl] != '.':
+                    ch_truefile = True
+                else:
+                    ch_truefile = False
+                    break
+                
+            if ch_truefile == True:
+                z_2 = os.listdir(x_1)
+                for x_2 in z_2:
+                    if x_2[-5:] == '.json':
+                        f.write(x_1+'/'+x_2)
+                    elif x_2[-4:] == '.png':
+                        f.write(x_1+'/'+x_2)
+                    elif x_2[-4:] == '.txt':
+                        f.write(x_1+'/'+x_2)
+                    for xl in range(len(x_2)):
+                        if x_2[xl] != '.':
+                            ch_truefile = True
+                        else:
+                            ch_truefile = False
+                            break
+                        
+                    if ch_truefile == True:
+                        z_3 = os.listdir(x_1+'/'+x_2)
+                        for x_3 in z_3:
+                            if x_3[-5:] == '.json':
+                                f.write(x_1+'/'+x_2+'/'+x_3)
+                            elif x_3[-4:] == '.png':
+                                f.write(x_1+'/'+x_2+'/'+x_3)
+                            elif x_3[-4:] == '.txt':
+                                f.write(x_1+'/'+x_2+'/'+x_3)
+                            for xl in range(len(x_3)):
+                                if x_3[xl] != '.':
+                                    ch_truefile = True
+                                else:
+                                    ch_truefile = False
+                                    break
+
+                            if ch_truefile == True:
+                                z_4 = os.listdir(x_1+'/'+x_2+'/'+x_3)
+                                for x_4 in z_4:
+                                    if x_4[-5:] == '.json':
+                                        f.write(x_1+'/'+x_2+'/'+x_3+'/'+x_4)
+                                    elif x_4[-4:] == '.png':
+                                        f.write(x_1+'/'+x_2+'/'+x_3+'/'+x_4)
+                                    elif x_4[-4:] == '.txt':
+                                        f.write(x_1+'/'+x_2+'/'+x_3+'/'+x_4)

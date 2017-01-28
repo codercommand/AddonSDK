@@ -1,5 +1,5 @@
 # AddonSDK
-version 2.2
+version 2.3
 requiers python 3.5 
 (was made on 3.5.2, but anything thats 3.5+ should work)
 

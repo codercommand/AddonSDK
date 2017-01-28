@@ -3,7 +3,6 @@ import json
 import os
 
 z = os.listdir()#this gets all files in directory to pack
-z.remove('ziper.py')#this stops the zipper from being packed
 
 #_____________________________________________________________________
 ch_manifest = False
@@ -27,6 +26,14 @@ try:#this try is used to make sure everything is there in manifest,
 except:
     print('Error there is no manifest file or manifest has somthing missing.')
     uc = input('in order to fix the problem try running the $ update <project name> command')
+#_____________________________________________________________________
+print('mcpack check')
+try:
+    z.index(p['header']['name']+'.mcpack')
+    os.remove(p['header']['name']+'.mcpack')
+    print('mcpack true')
+except:
+    print('mcpack false')
 #_____________________________________________________________________
 ch_truefile = False#from here on this is the code that zips all png, txt, folders,
 if ch_manifest == True:#and json files
